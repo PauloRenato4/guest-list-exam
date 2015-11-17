@@ -3,7 +3,7 @@ class GuestsService {
     
     public static function listGuests() {
         $db = ConnectionGuest::getDB();
-        $tasks = array();
+        $guests = array();
         
         foreach($db->guests() as $guest) {
            $guests[] = array (
@@ -16,7 +16,7 @@ class GuestsService {
         return $guests;
     }
     
-    public static function getGuest($guests) {
+    public static function get($guests) {
         $db = ConnectionGuest::getDB();
         return $db->guests;
     }
@@ -37,8 +37,8 @@ class GuestsService {
         }
         return false;
     }
-    
-    public static function delete($guests) {
+  /*  
+    public static function delete() {
         $db = ConnectionGuest::getDB();
         $guest = $db->guests;
         if($guest) {
@@ -47,5 +47,6 @@ class GuestsService {
         }
         return false;
     }
+    */
 }
 ?>

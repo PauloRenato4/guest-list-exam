@@ -27,7 +27,7 @@ RESPONSE 200 OK
 ]
 */
 
-$app->get('/api/guests', function() use ( $app ) {
+$app->get('/guests/', function() use ( $app ) {
     $guests = GuestsService::listGuests();
     $app->response()->header('Content-Type', 'application/json');
     echo json_encode($guests);
@@ -49,7 +49,7 @@ RESPONSE 200 OK
 }
 
 */
-$app->post('/api/guests', function() use ( $app ) {
+$app->post('/guests/', function() use ( $app ) {
     $guestJson = $app->request()->getBody();
     $newguest = json_decode($guestJson, true);
     if($newguest) {
@@ -72,7 +72,7 @@ RESPONSE 200 OK
 }
 
 */
-$app->delete('/api/guests/:id', function($id) use ( $app ) {
+$app->delete('/guests/:id', function($id) use ( $app ) {
     if(GuestsService::delete($id)) {
       echo "Guest deleted!";
     }
@@ -90,7 +90,7 @@ RESPONSE 404 NOT FOUND
   "message": "Guest with x does not exit"
 }
 */
-$app->delete('/api/guests/', function() use ( $app ) {
+$app->delete('/guests/', function() use ( $app ) {
     if(GuestsService::delete($guests)) {
       echo "Guest deleted!";
     }
