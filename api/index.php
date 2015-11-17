@@ -37,10 +37,10 @@ $app->get('/guests/', function() use ( $app ) {
 
 /*HTTP POST /api/guests
 REQUEST Body 
-{
-	"name": "Lidy Segura",
-	"email": "lidyber@gmail.com"
-}
+  {
+  	"name": "Lidy Segura",
+  	"email": "lidyber@gmail.com"
+  }
 
 RESPONSE 200 OK 
 {
@@ -55,7 +55,7 @@ $app->post('/guests/', function() use ( $app ) {
     $newguest = json_decode($guestJson, true);
     if($newguest) {
         $guest = GuestsService::add($newguest);
-        echo " {$guest} added";
+       echo $guest;
     }
     else {
         $app->response->setStatus(400);
