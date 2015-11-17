@@ -51,7 +51,7 @@ class GuestsService {
         }
         return false;
     }
-  /*  
+  /*
     public static function delete() {
         $db = ConnectionGuest::getDB();
         $guest = $db->guests;
