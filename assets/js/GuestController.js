@@ -49,6 +49,7 @@ var GuestController = {
 				}
 			})
 		}
+		
 	},
 	
 	showList: function () {
