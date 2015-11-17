@@ -100,6 +100,26 @@ $app->delete('/guests/', function() use ( $app ) {
     }
 });
 
+$app->put('/guests/', function() use ( $app ) {
+    $guestJson = $app->request()->getBody();
+    $updatedguest = json_decode($guestJson, true);
+    
+    if($updatedguest && $updatedguest['id']) {
+        if(GuestsService::update($updatedguest)) {
+          echo "Guest {$updatedguest['name']} updated";  
+        }
+        else {
+          $app->response->setStatus('404');
+          echo "Guest not found";
+        }
+    }
+    else {
+        $app->response->setStatus(400);
+        echo "Malformat JSON";
+    }
+});
+
+
 
 $app->run();
 ?>

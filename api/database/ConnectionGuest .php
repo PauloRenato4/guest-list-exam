@@ -1,4 +1,5 @@
 <?php
+
 class ConnectionGuest {
     public static function getDB() {
         $connection = self::getConnection();

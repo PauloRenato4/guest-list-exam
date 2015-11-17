@@ -16,7 +16,7 @@ class GuestsService {
         return $guests;
     }
     
-    public static function get($guests) {
+    public static function getDB($guests) {
         $db = ConnectionGuest::getDB();
         return $db->guests;
     }
@@ -27,6 +27,20 @@ class GuestsService {
         return $guest;
     }
     
+    
+       public static function update($updatedguest) {
+        $db = ConnectionGuest::getDB();
+        $guest = $db->guests[$updatedguest['id']];
+        
+        if($guest) {
+            $guest['name'] = $updatedguest['name'];
+            $guest['email'] = $updatedguest['email'];
+            $guest->update();
+            return true;
+        }
+        
+        return false;
+    }
     
     public static function delete($id) {
         $db = ConnectionGuest::getDB();
